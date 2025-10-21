@@ -1,0 +1,54 @@
+# ----------------------------------------------------------------------
+# Node.js/Express Backend .gitignore
+# ----------------------------------------------------------------------
+
+# 1. DEPENDENCIES AND BUILD ARTIFACTS
+####################################
+# Node modules directory
+/node_modules
+# Yarn and NPM lock files (if you only use one, you can remove the other)
+yarn-error.log
+package-lock.json
+npm-debug.log*
+
+# 2. ENVIRONMENT AND CONFIGURATION
+###################################
+# Environment variables file (contains secrets, keys, and connection strings)
+.env
+.env.*
+# Logs and temporary runtime files
+logs
+*.log
+npm-debug.log*
+.idea/
+
+# 3. OPERATING SYSTEM AND EDITOR FILES
+#######################################
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+
+# VS Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history
+
+# 4. UPLOADED AND GENERATED FILES
+#################################
+# Since your app handles file uploads (PDFs), 
+# you should ignore the directory where files are stored.
+# Replace 'uploads/' with your actual upload directory name.
+/uploads
+/temp
+/tmp
+
+# 5. TEST/COVERAGE
+####################
+/coverage
+/.nyc_output
