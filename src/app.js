@@ -3,6 +3,7 @@ const cors = require('cors');
 const pdfRoutes = require('./routes/pdf.routes');
 const translateRoutes = require('./routes/translate.routes');
 const notesRoutes = require('./routes/notes.routes');
+const textPdfRoutes = require('./routes/text-pdf.routes'); // ADD THIS LINE
 const errorHandler = require('./middlewares/errorHandler');
 
 function createServer() {
@@ -22,6 +23,7 @@ function createServer() {
   app.use('/api/pdf', pdfRoutes);
   app.use('/api/translate', translateRoutes);
   app.use('/api/notes', notesRoutes);
+  app.use('/api/text-pdf', textPdfRoutes); // ADD THIS LINE
   
   app.use(errorHandler);
 

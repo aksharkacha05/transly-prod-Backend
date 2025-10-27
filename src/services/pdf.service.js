@@ -49,6 +49,39 @@ exports.createTranslatedPDF = async (translatedText, originalInfo = {}) => {
   });
 };
 
+// NEW: Create PDF from text content
+exports.createTextPDF = async (text, filename = 'document') => {
+  return new Promise((resolve, reject) => {
+    try {
+      const doc = new PDFDocument();
+      const buffers = [];
+      
+      doc.on('data', buffers.push.bind(buffers));
+      doc.on('end', () => {
+        const pdfData = Buffer.concat(buffers);
+        resolve(pdfData);
+      });
+
+      // Add metadata
+      doc.info.Title = filename;
+      doc.info.Author = 'Translation App';
+      doc.info.CreationDate = new Date();
+
+      // Add content
+      doc.fontSize(12);
+      doc.text(text, {
+        align: 'left',
+        width: 500,
+        height: 700
+      });
+
+      doc.end();
+    } catch (error) {
+      reject(new Error(`PDF creation failed: ${error.message}`));
+    }
+  });
+};
+
 exports.getPDFInfo = async (buffer) => {
   try {
     const data = await pdf(buffer);
